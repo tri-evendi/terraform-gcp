@@ -77,7 +77,7 @@ resource "google_compute_instance" "server" {
 # create resource to copy folder to server recursive
 resource "null_resource" "copy_folder" {
   provisioner "file" {
-    content     = "${template_file("rsync.sh", { source = "path/to/local/folder", destination = "/path/on/server" })}"
+    content     = "${templatefile("rsync.sh", { source = "path/to/local/folder", destination = "/path/on/server" })}"
     destination = "/tmp/rsync.sh"
   }
   provisioner "remote-exec" {

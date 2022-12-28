@@ -1,0 +1,6 @@
+# Untrack all file inside .terraform
+/.terraform
+# Untrack file .terraform.lock.hcl
+.terraform.lock.hcl
+# Untrack file google-credentials.json
+google-credentials.json

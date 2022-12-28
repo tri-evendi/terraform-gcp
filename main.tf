@@ -59,8 +59,8 @@ resource "google_compute_instance" "server" {
 
   # copy folder recursive to instance using provisioner
   provisioner "file" {
-    source      = var.source
-    destination = var.destination
+    source      = var.source-data
+    destination = var.destination-data
   }
 
   provisioner "remote-exec" {

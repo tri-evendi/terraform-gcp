@@ -66,13 +66,13 @@ variable "GCP_ACCESS_TOKEN" {
   default     = "./google-credentials.json"
 }
 # variable source
-variable "source" {
+variable "source-data" {
   type        = string
   description = "The source of the resource."
   default     = "path/to/local/folder"
 }
 # variable destination
-variable "destination" {
+variable "destination-data" {
   type        = string
   description = "The destination of the resource."
   default     = "/path/on/server"

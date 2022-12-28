@@ -65,3 +65,15 @@ variable "GCP_ACCESS_TOKEN" {
   description = "The gcp credential of the resource."
   default     = "./google-credentials.json"
 }
+# variable source
+variable "source" {
+  type        = string
+  description = "The source of the resource."
+  default     = "path/to/local/folder"
+}
+# variable destination
+variable "destination" {
+  type        = string
+  description = "The destination of the resource."
+  default     = "/path/on/server"
+}

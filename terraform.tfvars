@@ -10,3 +10,5 @@ image = "ubuntu-os-cloud/ubuntu-2004-lts"
 disk_size = 15
 disk_type = "pd-standard"
 GCP_ACCESS_TOKEN = "./google-credentials.json"
+source = "path/to/local/folder"
+destination = "/path/on/server"

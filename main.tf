@@ -56,6 +56,13 @@ resource "google_compute_instance" "server" {
       # Include this section to give the VM an external IP address
     }
   }
+
+  # copy folder recursive to instance using provisioner
+  provisioner "file" {
+    source      = var.source
+    destination = var.destination
+  }
+
   provisioner "remote-exec" {
     inline = [
       "sudo apt-get update",
@@ -74,25 +81,7 @@ resource "google_compute_instance" "server" {
     ]
   }
 }
-# create resource to copy folder to server recursive
-resource "null_resource" "copy_folder" {
-  provisioner "file" {
-    content     = "${templatefile("rsync.sh", { source = "path/to/local/folder", destination = "/path/on/server" })}"
-    destination = "/tmp/rsync.sh"
-  }
-  provisioner "remote-exec" {
-    inline = [
-      "bash /tmp/rsync.sh"
-    ]
-  }
-}
-data "template_file" "rsync_script" {
-  template = <<EOF
-  #!/bin/bash
 
-  rsync -a ${var.source} ${var.destination}
-  EOF
-}
 # create resource google_storage_bucket
 resource "google_storage_bucket" "default" {
   name          = "${var.name}-${random_id.instance.hex}-bucket"
